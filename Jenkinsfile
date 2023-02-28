@@ -33,10 +33,8 @@ pipeline {
     
     stage('Deploy'){
       steps {
-            withKubeConfig([credentialsId: 'my.aws.credentials']) {  
-                 sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"'  
-                 sh 'chmod u+x ./kubectl'  
-                 sh './kubectl apply -f deployment.yml'  
+            withKubeConfig([credentialsId: 'my.aws.credentials', serverUrl: 'https://78684FEE191971685B9D16FD501C6DA4.gr7.us-east-1.eks.amazonaws.com']) {
+              sh 'kubectl apply -f deployment.yml' 
             }
         }
 
