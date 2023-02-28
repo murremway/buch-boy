@@ -10,6 +10,9 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 sudo apt-get update
 sudo apt-get install jenkins
 sudo systemctl start jenkins
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 
 # Install Docker
 sudo apt-get remove -y docker docker-engine docker.io containerd runc
